@@ -1,0 +1,71 @@
+
+ 
+<div class="container">
+    <div class="card">
+      <div class="card-header">Summary</div>
+  
+      <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+               <p>Your Tesla {{infoOptionCosts.model}}</p>
+            </div>
+            <div class="col-6">
+                <p>{{infoOptionCosts.description}}</p>
+             </div>
+             <div class="col-6">
+                <p>{{infoOptionCosts.price | currency :"USD"}}</p>
+             </div>
+             <div class="col-12" *ngIf="infoOptionCosts.range">
+                <span>Rang :{{ infoOptionCosts.range}} miles</span>
+                <span>Max speed :{{ infoOptionCosts.speed}} </span>
+             </div>
+             <div class="col-6">
+                <p>{{infoOptionCosts.color?.description}} color</p>
+             </div>
+             <div class="col-6">
+                <p>{{infoOptionCosts.color?.price| currency :"USD"}}</p>
+             </div>
+
+             <div class="col-6" *ngIf="infoOptionCosts.towHitchConfig">
+                 <p>Tow Hitch Package</p>
+             </div>
+             <div class="col-6" *ngIf="infoOptionCosts.towHitchConfig">
+                  <div *ngIf="infoOptionCosts.towHitch;else tow">
+                    <p>{{infoOptionCosts.towHitchPrice | currency :"USD"}}</p>
+                  </div>
+                  <ng-template #tow>
+                    Tow Hitch Package has been not selected
+                  </ng-template>
+                  
+            </div>
+            
+            <div class="col-6" *ngIf="infoOptionCosts.yokeConfig">
+                <p>Yoke Package</p>
+            </div>
+            <div class="col-6" *ngIf="infoOptionCosts.yokeConfig">
+                 <div *ngIf="infoOptionCosts.yoke;else yoke">
+                   <p>{{infoOptionCosts.yokePrice | currency :"USD"}}</p>
+                 </div>
+                 <ng-template #yoke>
+                   Yoke Package has been not selected
+                 </ng-template>
+                 
+           </div>
+
+           <div class="col-6">
+            <p>Totale Cost</p>
+        </div>
+        <div class="col-6">
+            <p>{{infoOptionCosts.estimatePrice| currency :"USD"}}</p>
+        </div>
+
+          <div class="col-12">
+            <hr>
+            <img src="{{infoOptionCosts.imgUrl! | formatUrlImg }}">
+           
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </div>

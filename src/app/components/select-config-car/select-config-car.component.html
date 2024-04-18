@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="card">
+      <div class="card-header">Stepepr 2</div>
+  
+      <div class="card-body">
+        <div class="row">
+          <div class="col-6">
+            <label>Choose  Config</label>
+            <select [(ngModel)]="infoOptionCosts.id" class="form-select form-select-sm" (change)="addOption()" id="configSelect">
+                <option *ngFor="let option of optionConfig?.configs" [ngValue]="option.id">
+                    {{option.description}}
+                </option>
+            </select>
+          </div>
+          <div class="col-12" *ngIf="infoOptionCosts.range" >
+            <span>Rang :{{ infoOptionCosts.range}} miles</span>
+            <span>Max speed :{{ infoOptionCosts.speed}} miles</span>
+            <span>Cost : {{ infoOptionCosts.price | currency :'USD'}} </span>
+          </div>
+
+          <div class="col-12 form-check" *ngIf="optionConfig?.towHitch!" [ngStyle]="optionConfig?.towHitch ? {'color': 'red'} :{'color': 'gray'}">
+            <label>Tow Hitch ?</label>
+            <input type="checkbox" [(ngModel)]="infoOptionCosts.towHitch" class="form-check-input" id="includeTow" (change)="changeExtraOption($event)"/>
+          </div>
+          <div class="col-12 form-check" *ngIf="optionConfig?.yoke!" [ngStyle]="optionConfig?.yoke! ? {'color': 'gray'} :{'color': 'yollow'}">
+            <label>Yoke steering wheel ?</label>
+            <input type="checkbox" [(ngModel)]="infoOptionCosts.yoke" class="form-check-input" id="includeYoke" (change)="changeExtraOption($event)"/>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </div>
